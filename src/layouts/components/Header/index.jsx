@@ -6,7 +6,7 @@ import {
   MenuFoldOutlined,
   FullscreenOutlined,
   FullscreenExitOutlined,
-  NotificationOutlined,
+  BellOutlined,
   UserOutlined,
   SettingOutlined,
   LogoutOutlined
@@ -37,7 +37,7 @@ function HeadBar({ collapsed, toggle }) {
           </Menu.Item>
           <Menu.Item key="notification">
             <Badge count={25} overflowCount={10} offset={[10, -6]}>
-              <NotificationOutlined />
+              <BellOutlined />
             </Badge>
           </Menu.Item>
           <SubMenu

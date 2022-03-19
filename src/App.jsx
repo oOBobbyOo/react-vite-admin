@@ -1,26 +1,48 @@
-import React, { Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { Suspense, lazy } from 'react'
+import { useRoutes } from 'react-router-dom'
+import { Spin } from 'antd'
 
-import { ConfigProvider } from 'antd'
-import zhCN from 'antd/es/locale/zh_CN'
-import 'moment/locale/zh-cn'
+import Layout from '@/layouts/Layout'
+const Dashboard = lazy(() => import('@/pages/Dashboard'))
+const Form = lazy(() => import('@/pages/Form'))
+const Table = lazy(() => import('@/pages/Table'))
+const Login = lazy(() => import('@/pages/Login'))
+const NotFound = lazy(() => import('@/pages/NotFound'))
 
-import Home from './pages/Home/Home'
-import About from './pages/About/About'
-
-const App = () => {
+const loadComp = (Comp) => {
   return (
-    <ConfigProvider locale={zhCN}>
-      <Suspense fallback={<span>loading</span>}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/about" element={<About />}></Route>
-          </Routes>
-        </Router>
-      </Suspense>
-    </ConfigProvider>
+    <Suspense fallback={<Spin />}>
+      <Comp />
+    </Suspense>
   )
+}
+
+const routes = [
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: loadComp(Dashboard)
+      },
+      {
+        path: 'form',
+        element: loadComp(Form)
+      },
+      {
+        path: 'table',
+        element: loadComp(Table)
+      }
+    ]
+  },
+  { path: '/login', element: loadComp(Login) },
+  { path: '*', element: loadComp(NotFound) }
+]
+
+function App() {
+  const element = useRoutes(routes)
+  return element
 }
 
 export default App

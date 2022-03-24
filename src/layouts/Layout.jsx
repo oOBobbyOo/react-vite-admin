@@ -8,8 +8,7 @@ function Layouts() {
     setCollapsed(!collapsed)
   }
   return (
-    <>
-      <Layout>
+    <Layout>
         <Siderbar collapsed={collapsed} />
         <Layout className="app-main">
           <Header collapsed={collapsed} toggle={toggle} />
@@ -17,7 +16,6 @@ function Layouts() {
           <Footer />
         </Layout>
       </Layout>
-    </>
   )
 }
 

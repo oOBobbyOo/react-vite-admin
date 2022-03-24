@@ -1,8 +1,9 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Layout } from 'antd'
-const { Content } = Layout
 import './index.less'
+
+const { Content } = Layout
 
 function AppMain() {
   return (

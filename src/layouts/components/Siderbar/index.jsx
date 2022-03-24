@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { Layout, Menu } from 'antd'
 import { BankOutlined, FormOutlined, TableOutlined } from '@ant-design/icons'
 import './index.less'
+
 const { Sider } = Layout
 const { SubMenu } = Menu
 
@@ -63,6 +65,10 @@ function Sidebar({ collapsed }) {
       </Menu>
     </Sider>
   )
+}
+
+Sidebar.propTypes = {
+  collapsed: PropTypes.bool.isRequired
 }
 
 export default Sidebar

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import screenfull from 'screenfull'
 import { Layout, Menu, Badge, Avatar } from 'antd'
 import {
@@ -12,6 +13,7 @@ import {
   LogoutOutlined
 } from '@ant-design/icons'
 import styles from './index.module.less'
+
 const { Header } = Layout
 const { SubMenu } = Menu
 
@@ -63,6 +65,11 @@ function HeadBar({ collapsed, toggle }) {
       </div>
     </Header>
   )
+}
+
+HeadBar.propTypes = {
+  collapsed: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired
 }
 
 export default HeadBar

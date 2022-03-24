@@ -53,10 +53,14 @@ export default defineConfig({
   },
   resolve: {
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
-    alias: {
-      '~': resolve(__dirname, './'),
-      '@': resolve(__dirname, 'src')
-    }
+    alias: [
+      { find: '~', replacement: resolve(__dirname, './') },
+      { find: '@', replacement: resolve(__dirname, './src') }
+    ]
+    // alias: {
+    //   '~': resolve(__dirname, './'),
+    //   '@': resolve(__dirname, 'src')
+    // }
   },
   css: {
     preprocessorOptions: {

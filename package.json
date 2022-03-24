@@ -5,12 +5,34 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install",
+    "lint": "yarn run lint:js && yarn run lint:style && yarn run lint:prettier",
+    "lint:js": "eslint --cache --ext .js,jsx,ts,tsx --fix ./src",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --custom-syntax postcss-less",
+    "lint:prettier": "prettier --config .prettierrc --write ./src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.less": [
+      "stylelint --fix --custom-syntax postcss-less",
+      "git add"
+    ],
+    ".{js,jsx,ts.tsx}": [
+      "yarn lint:prettier",
+      "yarn lint:js",
+      "git add"
+    ]
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.19.2",
     "less-vars-to-js": "^1.3.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.2",
@@ -24,13 +46,21 @@
     "eslint": "^8.11.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
     "less": "^4.1.2",
+    "lint-staged": "^12.3.7",
+    "postcss-less": "^6.0.0",
     "prettier": "^2.6.0",
+    "stylelint": "^14.6.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-order": "^5.0.0",
     "vite": "^2.8.0",
     "vite-plugin-imp": "^2.1.6",
     "vite-plugin-style-import": "^2.0.0"

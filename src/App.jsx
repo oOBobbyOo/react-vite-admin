@@ -3,6 +3,7 @@ import { useRoutes, useNavigate } from 'react-router-dom'
 import { Spin } from 'antd'
 
 import Layout from '@/layouts/Layout'
+
 const Analysis = lazy(() => import('@/pages/Dashboard/Analysis'))
 const Monitor = lazy(() => import('@/pages/Dashboard/Monitor'))
 const Workplace = lazy(() => import('@/pages/Dashboard/Workplace'))
@@ -17,16 +18,14 @@ const AdvancedTable = lazy(() => import('@/pages/Table/AdvancedTable'))
 const Login = lazy(() => import('@/pages/Login'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 
-const loadComp = (Comp) => {
-  return (
-    <Suspense fallback={<Spin />}>
-      <Comp />
-    </Suspense>
-  )
-}
+const loadComp = (Comp) => (
+  <Suspense fallback={<Spin />}>
+    <Comp />
+  </Suspense>
+)
 
-const Redirect = ({ to }) => {
-  let navigate = useNavigate()
+function Redirect({ to }) {
+  const navigate = useNavigate()
   useEffect(() => {
     navigate(to, { replace: true })
   }, [])

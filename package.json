@@ -18,10 +18,7 @@
     }
   },
   "lint-staged": {
-    "*.less": [
-      "stylelint --fix --custom-syntax postcss-less",
-      "git add"
-    ],
+    "*.less": "stylelint --fix --custom-syntax postcss-less",
     ".{js,jsx,ts.tsx}": [
       "yarn lint:prettier",
       "yarn lint:js",

@@ -19,10 +19,11 @@
     }
   },
   "lint-staged": {
-    "*.less": "stylelint --fix --custom-syntax postcss-less",
-    ".{js,jsx,ts.tsx}": [
-      "yarn lint:prettier",
-      "yarn lint:js"
+    "*src/**/*.less": "stylelint --fix --custom-syntax postcss-less",
+    "src/**/*.{js,jsx,ts.tsx}": [
+      "prettier --config .prettierrc --write",
+      "eslint --fix",
+      "git add"
     ]
   },
   "dependencies": {

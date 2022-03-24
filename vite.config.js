@@ -5,6 +5,10 @@ import legacy from '@vitejs/plugin-legacy'
 // import vitePluginImp from 'vite-plugin-imp'
 import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import'
 import { resolve } from 'path'
+import fs from 'fs'
+import lessToJS from 'less-vars-to-js'
+
+const themeVariables = lessToJS(fs.readFileSync(resolve(__dirname, './config/theme/variables.less'), 'utf8'))
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -58,7 +62,9 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         // 支持内联 JavaScript，支持 less 内联 JS
-        javascriptEnabled: true
+        javascriptEnabled: true,
+        // 重写 less 变量，定制样式
+        modifyVars: themeVariables
       }
     }
   }

@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
-import 'moment/locale/zh-cn'
+// import 'moment/locale/zh-cn'
 
 import './index.css'
 import App from './App'

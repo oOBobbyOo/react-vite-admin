@@ -22,6 +22,8 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react'],
-  rules: {}
+  plugins: ['react', 'prettier'],
+  rules: {
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
+  }
 }

@@ -24,6 +24,15 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'react/jsx-no-useless-fragment': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['noHref', 'invalidHref', 'preferButton']
+      }
+    ]
   }
 }

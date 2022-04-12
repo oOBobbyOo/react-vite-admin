@@ -10,7 +10,7 @@ const { SubMenu } = Menu
 
 function Sidebar({ collapsed }) {
   return (
-    <Sider className="siderbar" trigger={null} collapsible collapsed={collapsed}>
+    <Sider className="antd-global-sider" trigger={null} collapsible collapsed={collapsed}>
       <div className="logo" />
 
       <Menu mode="inline" theme="dark">

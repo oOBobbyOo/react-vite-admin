@@ -12,7 +12,7 @@ import {
   SettingOutlined,
   LogoutOutlined
 } from '@ant-design/icons'
-import styles from './index.module.less'
+import './index.less'
 
 const { Header } = Layout
 const { SubMenu } = Menu
@@ -28,11 +28,11 @@ function HeadBar({ collapsed, toggle }) {
   const signOut = () => {}
 
   return (
-    <Header className={styles.header}>
-      <div className={styles.trigger} onClick={toggle}>
+    <Header className="antd-global-header">
+      <div className="trigger" onClick={toggle} aria-hidden>
         {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
       </div>
-      <div className={styles.menu}>
+      <div className="menu">
         <Menu mode="horizontal" selectable={false}>
           <Menu.Item key="full" onClick={handleFullScreen}>
             {isFullScreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
@@ -45,9 +45,9 @@ function HeadBar({ collapsed, toggle }) {
           <SubMenu
             key="user"
             title={
-              <div className={styles.avatar}>
+              <div className="avatar">
                 <Avatar size={24} icon={<UserOutlined />} />
-                <span className={styles.name}>用户名</span>
+                <span className="name">用户名</span>
               </div>
             }
           >
